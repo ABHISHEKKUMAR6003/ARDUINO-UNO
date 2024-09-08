@@ -97,10 +97,8 @@ void loop(){
       
       else if(passcode=="CD")//CODE FOR CLOSING DOOR
       {
-        
-        lcd_1.print("DOOR CLOSING");
-        digitalWrite(13,LOW);
         servo.write(0);
+        digitalWrite(13,LOW);        
         lcd_1.clear();
         lcd_1.print("DOOR CLOSED");
         
