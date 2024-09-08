@@ -31,6 +31,7 @@ void setup(){
   lcd_1.clear();
   lcd_1.print("FAN SPEED(0-100)");
   lcd_1.setCursor(0,1);
+  lcd_1.print("CLICK D TO SET");
   
   
 
@@ -51,7 +52,6 @@ void loop(){
     if(key=='*')
     {
         lcd_1.clear();
-        Serial.println("Enter Password ending with D");
         value="";
 
     }
