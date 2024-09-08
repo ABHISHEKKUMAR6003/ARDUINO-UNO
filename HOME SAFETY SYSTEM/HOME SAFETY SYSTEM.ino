@@ -31,7 +31,7 @@ byte colPins[COLS] = {5, 4, 3, 2}; //connect to the column pinouts of the keypad
 Keypad keypad = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS );
 
 String passcode="";
-Servo servo_10;
+Servo servo;
 
 void setup(){
   
@@ -39,9 +39,9 @@ void setup(){
   pinMode(10, OUTPUT);
   pinMode(13, OUTPUT);
   pinMode(12,INPUT);
-  servo_10.attach(10);
+  servo.attach(10);
   
-  servo_10.write(0);
+  servo.write(0);
   lcd_1.begin(16, 2);
 }
 
@@ -67,10 +67,11 @@ void loop(){
     
     if(key=='#') //KEY FOR CLEARING PASSWORD AND ENTER AGAIN
     {
-        
-        passcode="";
-      	
-        
+      lcd_1.clear();
+      lcd_1.print("ENTER AGAIN");
+      delay(1000);
+      lcd_1.clear();
+      passcode="";        
 
     }
     
@@ -88,7 +89,7 @@ void loop(){
       {
           Serial.println("Access Granted");
             lcd_1.print("ACCESS GRANTED:)");
-            servo_10.write(90);
+            servo.write(90);
             delay(2000);
             digitalWrite(13,HIGH);
             passcode="";
@@ -98,7 +99,8 @@ void loop(){
       {
         
         lcd_1.print("DOOR CLOSING");
-        servo_10.write(0);
+        digitalWrite(13,LOW);
+        servo.write(0);
         lcd_1.clear();
         lcd_1.print("DOOR CLOSED");
         
@@ -122,14 +124,14 @@ void loop(){
       
     
   }
-  if((servo_10.read()<10) && (digitalRead(12)==1))//MOVEMENT DETECTION PROVIDED DOOR IS CLOSED
+  if((servo.read()<10) && (digitalRead(12)==1))//MOVEMENT DETECTION PROVIDED DOOR IS CLOSED
   {
     lcd_1.clear();
     digitalWrite(11,HIGH);
     lcd_1.print("BURGLAR ALERT");
     delay(1000);
     
-         }
+ }
   
     
   
