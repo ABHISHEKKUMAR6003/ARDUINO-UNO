@@ -29,11 +29,11 @@ byte colPins[COLS] = {5, 4, 3, 2}; //connect to the column pinouts of the keypad
 
 Keypad keypad = Keypad( makeKeymap(keys), rowPins, colPins, ROWS, COLS );
 
-String v_passcode="";
+String passcode="";
 Servo servo_10;
 
 void setup(){
-  Serial.begin(9600);
+  
   pinMode(11,OUTPUT);
   pinMode(10, OUTPUT);
   pinMode(13, OUTPUT);
@@ -51,8 +51,8 @@ void loop(){
     
     lcd_1.clear();
     
-    v_passcode = v_passcode + key;
-    lcd_1.print(v_passcode);
+    passcode = passcode + key;
+    lcd_1.print(passcode);
     
   
     
@@ -60,15 +60,15 @@ void loop(){
     {
       digitalWrite(11,LOW);
       lcd_1.print("ALARM RESET :)");
-      v_passcode="";
+      passcode="";
 
     }
     
     if(key=='#') //KEY FOR CLEARING PASSWORD AND ENTER AGAIN
     {
-        Serial.println("Enter Password again ending with D");
-        v_passcode="";
-      	Serial.println(v_passcode);
+        
+        passcode="";
+      	
         
 
     }
@@ -80,7 +80,7 @@ void loop(){
     {
       
       lcd_1.setCursor(0,0);    
-      lcd_1.print(v_passcode);
+      lcd_1.print(passcode);
       lcd_1.setCursor(0,1);
           
       if (v_passcode=="589D")//OPENING DOOR
@@ -90,10 +90,10 @@ void loop(){
             servo_10.write(90);
             delay(2000);
             digitalWrite(13,HIGH);
-            v_passcode="";
+            passcode="";
           }
       
-      else if(v_passcode=="CD")//CODE FOR CLOSING DOOR
+      else if(passcode=="CD")//CODE FOR CLOSING DOOR
       {
         
         lcd_1.print("DOOR CLOSING");
@@ -110,7 +110,7 @@ void loop(){
         {
             
             lcd_1.print("ACCESS DENIED");
-             v_passcode="";
+            passcode="";
         }
       
       
