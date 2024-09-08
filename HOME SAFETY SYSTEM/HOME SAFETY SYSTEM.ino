@@ -1,6 +1,7 @@
 //PASSWORD - 589D
 //CLOSING - CD
 //RESET - ALARM *
+//ERASE - #
 /*motion detector works only if the door is closed and the
 slideswitch is ON (slide left to turn on)
 
