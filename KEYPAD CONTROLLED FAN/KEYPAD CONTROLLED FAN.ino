@@ -1,3 +1,8 @@
+/*
+ERASE - *
+SET VALUE - D
+*/
+
 #include <Adafruit_LiquidCrystal.h>
 #include <Keypad.h>
 Adafruit_LiquidCrystal lcd_1(0);
@@ -32,10 +37,6 @@ void setup(){
   lcd_1.print("FAN SPEED(0-100)");
   lcd_1.setCursor(0,1);
   lcd_1.print("CLICK D TO SET");
-  
-  
-
-  Serial.begin(9600);
 }
 
 void loop(){
@@ -67,10 +68,12 @@ void loop(){
         analogWrite(11,a1);
         value="";
         lcd_1.print(a);
+        lcd_1.setCursor(0,1);
+        lcd_1.print("VALUE SET :)");
       }
       else{
         lcd_1.clear();
-        lcd_1.print("INVALID INPUT");
+        lcd_1.print("INVALID INPUT :(");
         value="";
       }
     }
