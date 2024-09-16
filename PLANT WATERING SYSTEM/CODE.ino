@@ -1,4 +1,4 @@
-int moisture;
+int moisture = 0;
 
 void setup()
 {
