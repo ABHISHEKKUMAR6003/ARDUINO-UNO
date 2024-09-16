@@ -21,26 +21,26 @@ void loop()
   digitalWrite(12, LOW);
   //uses RGB LED as indicator
   if (moisture < 200) {
-    digitalWrite(12, HIGH); //red for critically low moisture
+    digitalWrite(12, HIGH);
     digitalWrite(7,HIGH);
   } 
   else if (moisture < 400) {
       digitalWrite(12, HIGH);
-      digitalWrite(10, HIGH);//light yellow for low moisture
+      digitalWrite(10, HIGH);
       digitalWrite(7,HIGH);
    } 
   else if (moisture < 600) {
       digitalWrite(10, HIGH);
-      digitalWrite(11,HIGH);//light blue
+      digitalWrite(11,HIGH);
       digitalWrite(7,LOW);
    } 
   else if (moisture < 800) {
       
-      digitalWrite(11, HIGH);//blue
+      digitalWrite(11, HIGH);
       digitalWrite(7,LOW);
    } 
   else {
-      digitalWrite(10, HIGH);//green for sufficient moisture level
+      digitalWrite(10, HIGH);
       digitalWrite(7,LOW);
         }
       
